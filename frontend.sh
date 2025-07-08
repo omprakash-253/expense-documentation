@@ -17,6 +17,7 @@ VALIDATE () {
         exit 1
     else
         echo -e "$2 is.. $G SUCCESSFUL $N"
+    fi
 }
 
 if [ $userid -ne 0 ]
@@ -42,8 +43,8 @@ VALIDATE $? "removing default nginx files"
 curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip &>>$logfile
 VALIDATE $? "extdownload frontend code to temp directory"
 
-cd /usr/share/nginx/html
-unzip /tmp/frontend.zip
+cd /usr/share/nginx/html &>>$logfile
+unzip /tmp/frontend.zip &>>$logfile
 VALIDATE $? "extracting frontend code"
 
 cp /home/ec2-user/expense-documentation/expense.conf /etc/nginx/default.d/expense.conf &>>$logfile
