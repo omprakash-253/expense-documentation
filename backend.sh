@@ -21,6 +21,7 @@ VALIDATE () {
         exit 1
     else
         echo -e "$2 is.. $G SUCCESSFUL $N"
+    fi
 }
 
 if [ $userid -ne 0 ]
@@ -78,7 +79,7 @@ VALIDATE $? "Starting backend service"
 dnf install mysql -y &>>$logfile
 VALIDATE $? "installing of mysql client"
 
-mysql -h db.omansh.fun -u root -p ${mysql_root_password} < /app/schema/backend.sql &>>$logfile
+mysql -h db.omansh.fun -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>$logfile
 VALIDATE $? "Schema loading"
 
 systemctl restart backend &>>$LOGFILE
