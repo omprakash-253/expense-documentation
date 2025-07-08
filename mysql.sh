@@ -44,7 +44,7 @@ VALIDATE $? "starting of mysql server"
 # VALIDATE $? "Setting up root password"
 
 #Below code will be useful for idempotent nature (replace 43 & 44 line)
-mysql -h db.omansh.fun -u root -p ${mysql_root_password} -e 'show databases;' &>>$logfile
+mysql -h db.omansh.fun -uroot -p${mysql_root_password} -e 'show databases;' &>>$logfile
 if [ $? -ne 0 ]
 then
     mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$logfile
