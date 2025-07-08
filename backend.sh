@@ -82,6 +82,7 @@ VALIDATE $? "installing of mysql client"
 mysql -h db.omansh.fun -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>$logfile
 VALIDATE $? "Schema loading"
 
+
 systemctl restart backend &>>$LOGFILE
 VALIDATE $? "Restarting Backend"
 
