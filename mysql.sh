@@ -20,6 +20,7 @@ VALIDATE() {
         exit 1
     else
         echo -e "$2 is.. $G SUCCESSFUL $N"
+    fi
 }
 
 if [ $userid -ne 0 ]
